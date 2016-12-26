@@ -1,20 +1,22 @@
-{"users" : [{
-    {
-      "name" : "shreyash14s",
-	  "password" : "mathematician",
-	  "profession" : "coder",
-	  "id": 1
-   },
-    {
-      "name" : "sanjayindia96",
-	  "password" : "password",
-	  "profession" : "librarian",
-	  "id": 2
-   },
-    	{
-      "name" : "siddharths2710",
-	  "password" : "ccbd123",
-	  "profession" : "clerk",
-	  "id": 3
-   }
-}]}
+{
+	"users" : [
+		{
+			"name" : "shreyash14s",
+			"password" : "mathematician",
+			"profession" : "coder",
+			"id": 1
+		},
+		{
+			"name" : "sanjayindia96",
+			"password" : "password",
+			"profession" : "librarian",
+			"id": 2
+		},
+		{
+			"name" : "siddharths2710",
+			"password" : "ccbd123",
+			"profession" : "clerk",
+			"id": 3
+		}
+	]
+}
