@@ -1,0 +1,298 @@
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title>Image Sharing</title>
+        		<script type="text/javascript" src="jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery/jquery-ui.js"></script>
+     	<style>
+     	
+     body {
+			background: #959796 url(images/wooder.jpg);
+		}
+		
+			ul.gall li a {
+		float: left;
+		width:18%;
+		height:auto;
+		padding: 10px 10px 25px 10px;
+		background: #eee;
+		border: 1px solid #fff;
+		-moz-box-shadow: 0px 2px 15px #333;
+		box-shadow: 0px 2px 15px #333;
+		position: relative;
+		}
+		
+		
+		
+		
+				ul.gall li a.pic-1 {
+			z-index: 1;
+			-webkit-transform: rotate(-10deg);
+			-moz-transform: rotate(-10deg);
+			position:absolute;
+			top:1%;
+			left:8%;
+		}
+		ul.gall li a.pic-2 {
+			z-index: 4;
+			-webkit-transform: rotate(-3deg);
+			-moz-transform: rotate(-3deg);
+			position:absolute;
+			top:1%;
+			left:25%;
+		}
+		ul.gall li a.pic-3 {
+			z-index: 3;
+			-webkit-transform: rotate(4deg);
+			-moz-transform: rotate(4deg);
+		position:absolute;
+			top:35%;
+			left:8%;
+			
+		}
+				ul.gall li a.pic-4 {
+			z-index: 5;
+			-webkit-transform: rotate(8deg);
+			-moz-transform: rotate(-20deg);
+				position:absolute;
+			top:35%;
+			left:25%;
+		
+		}
+		ul.gall li a.pic-5 {
+			z-index: 5;
+			-webkit-transform: rotate(-3deg);
+			-moz-transform: rotate(-3deg);
+			position:absolute;
+			top:67%;
+			left:8%;
+		}
+		ul.gall li a.pic-6 {
+			z-index: 3;
+			-webkit-transform: rotate(4deg);
+			-moz-transform: rotate(4deg);
+			position:absolute;
+			top:67%;
+			left:25%;
+		}
+		
+		ul.gall li a img
+		{
+			width:100%;
+			height:auto;
+			 -moz-transition: all 0.3s;
+  			-webkit-transition: all 0.3s;
+  			transition: all 0.3s;
+		}
+				ul.gall li a:hover {
+			z-index: 10;
+			-moz-box-shadow: 3px 5px 15px #333;
+		}
+			
+			
+			
+
+		#container {
+			width: 600px; margin: 40px auto;
+		}
+	
+	
+		.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+.login-help{
+  font-size: 12px;
+}
+
+
+
+ul.gall li a img:hover {
+-moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+		}
+
+#login_main{
+position: absolute;  
+right: 10%;  
+top: 30%;
+width:30%;
+}
+
+#signup_main{
+position: absolute;  
+right: 10%;  
+top: 40%;
+width:30%;
+}
+
+
+</style>
+ </head>
+<body>
+
+<div class="container">
+<ul class="gall">
+
+	<li><a href="#" class="pic-1"><img src="images/1.jpg" alt="Photograph of a waterfall" /></a></li>
+
+	<li><a href="#" class="pic-2"><img src="images/2.jpg" alt="Photograph of clouds and sunlight" /></a></li>
+	<li><a href="#" class="pic-3"><img src="images/3.jpg" alt="Photograph of a lake scene at dusk" /></a></li>
+
+	<li><a href="#" class="pic-4"><img src="images/4.jpg" alt="Photograph of a tree and green grass" /></a></li>
+
+	<li><a href="#" class="pic-5"><img src="images/5.jpg" alt="Photograph of a beach sunset" /></a></li>
+
+	<li><a href="#" class="pic-6"><img src="images/6.jpg" alt="Photograph of a flower and lake" /></a></li>
+
+</ul>
+</div>
+
+<button type="button" id="login_main" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#login-modal">Login</button>
+<a href = "signup.html"><button type="button" id="signup_main" class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form action="home.html" method="get">
+					<input type="text" id="user" placeholder="Username">
+					<input type="password" id="pass" placeholder="Password">
+					<input type="submit" class="login loginmodal-submit" value="Login" >
+				  </form>
+					
+				  <div class="login-help">
+					<a href="signup.html">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+		  
+<script>
+var i =0;
+var img = document.querySelectorAll('ul.gall li a img')
+var x = new Array(16);
+var temp,temp1;
+var text,obj;
+for(i=0;i<16;i++)
+{
+	x[i] = (i+1)
+}
+for(i=0;i<img.length;i++)
+{
+	temp = parseInt(Math.random()*16) + 1
+	if(x.index(temp) > -1)
+	{
+		img[i].src= 'images/' + temp.toString() + '.jpg'
+		x.splice(x.index(temp),1)
+	}
+	else
+	{
+		while(x.index(temp) != -1)
+		{
+			temp = parseInt(Math.random()*16) + 1
+		}
+		img[i].src= 'images/' + temp.toString() + '.jpg'
+		x.splice(x.index(temp),1)
+	}
+	
+
+}
+
+
+	
+
+
+</script>		  
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Image sharing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/bootstrap-image-gallery.min.js"></script>
+<script src="js/holder.min.js"></script>
+<script src="js/demo.js"></script>
+<style type="text/css">
+#drop_zone {
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold algerian;
+    color: #bbb;
+    width:30%;
+    position:relative;
+    bottom:0;
+    left:35%;
+}
+
+.thumb {
+	height: 200px;
+}
+body {
+	margin-top: 70px;
+	height: auto;
+}
+.mypanel {
+	display: inline-block;
+	padding: 1px;
+	margin: 10px;
+}
+.myfooter {
+	margin-top: 10px;
+}
+#links {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-fixed-top .navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Image Sharing</a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<!-- The container for the list of example images -->
+	<div id="links"></div>
+	<br>
+</div>
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+	<!-- The container for the modal slides -->
+	<div class="slides"></div>
+	<!-- Controls for the borderless lightbox -->
+	<h3 class="title"></h3>
+	<a class="prev">‹</a>
+	<a class="next">›</a>
+	<a class="close">×</a>
+	<a class="play-pause"></a>
+	<ol class="indicator"></ol>
+	<!-- The modal dialog, which will be used to wrap the lightbox content -->
+	<div class="modal fade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body next"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left prev">
+						<i class="glyphicon glyphicon-chevron-left"></i>
+						Previous
+					</button>
+					<button type="button" class="btn btn-default active pull-left like">
+						<i class="glyphicon glyphicon-thumbs-up"></i>
+						Like
+					</button>
+					<div class="likes">
+					</div>
+					<button type="button" class="btn btn-default share">
+						<i class="glyphicon glyphicon-share"></i>
+						Share
+					</button>
+					<button type="button" class="btn btn-primary next">
+						Next
+						<i class="glyphicon glyphicon-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div id="drop_zone" >Drop files here</div>
+<output id="list"></output>
+
+
+
+<script>
+function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    var linksContainer = $('#links')
+    for (var i = 0, f; f = files[i]; i++) {
+      /*output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '<strong>',escape(f.dirname),'</strong></li>');*/
+                console.log(f.name);
+      		$('<div/>')
+			.attr('class', 'panel panel-default mypanel')
+			.append($('<div/>')
+				.attr('class', 'panel-heading')
+				.append($('<h3/>').attr('class', 'panel-title')
+					.text('Image ' + i))
+			)
+			.append($('<div/>')
+				.attr('class', 'panel-body')
+				.append($('<a/>')
+					.append($('<img>')
+						.prop('src', '/root/Pictures/' + escape(f.name))
+						.attr('class', 'thumb'))
+					.prop('href', '/root/Pictures/' + escape(f.name))
+					.prop('title', escape(f.name))
+					//.attr('class', 'col-sm-6 col-md-3')
+					.attr('data-gallery', '')
+				)
+				.append($('<div/>')
+					.attr('class', 'myfooter')
+					.append(
+						//$('<button/>')
+						//.attr('type', 'button')
+						//.attr('class', 'btn btn-default pull-left like')
+						'<div class="btn btn-default pull-left like">\
+							<i class="glyphicon glyphicon-thumbs-up"></i>Like</div>\
+						<div class="btn btn-default pull-right share">\
+							<i class="glyphicon glyphicon-share"></i>Share</div>')
+					)
+			)
+			.appendTo(linksContainer)
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById('drop_zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+</script>
+</body>
+</html>
