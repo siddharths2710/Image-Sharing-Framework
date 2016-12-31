@@ -17,4 +17,4 @@ node server.js
 
 ##  Working  ##
 
-![alt tag](http://i.imgur.com/IHIMwWl.gif)
+![alt tag](Image_Demo.gif)
